@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fale Conosco — Sua Essência</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .page-hero { background: linear-gradient(135deg, var(--vinho-dark), var(--vinho)); padding: 80px 24px 64px; text-align: center; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--branco); }
+    .page-hero h1 em { color: var(--dourado); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,.55); margin-top: 12px; font-size: .9rem; }
+
+    .contato-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+    /* Info */
+    .contato-info h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--vinho); margin-bottom: 20px; }
+    .contato-info p { font-size: .9rem; color: var(--texto-md); line-height: 1.8; margin-bottom: 32px; }
+    .canal {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px; background: var(--branco);
+      border-radius: var(--radius-lg); margin-bottom: 12px;
+      box-shadow: var(--shadow-sm); text-decoration: none;
+      transition: var(--trans); color: var(--texto);
+    }
+    .canal:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+    .canal-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .canal-icon.whats { background: #e8fdf0; }
+    .canal-icon.insta { background: #fdf0f8; }
+    .canal-text strong { display: block; font-size: .88rem; color: var(--texto); }
+    .canal-text span { font-size: .78rem; color: var(--texto-lt); }
+
+    /* Formulário */
+    .contato-form-card {
+      background: var(--branco);
+      border-radius: var(--radius-lg);
+      padding: 40px; box-shadow: var(--shadow-md);
+    }
+    .contato-form-card h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--vinho); margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: .75rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--texto-lt);
+      margin-bottom: 7px; font-weight: 500;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--bege-dark);
+      border-radius: var(--radius); background: var(--areia-lt);
+      font-family: var(--font-body); font-size: .9rem;
+      color: var(--texto); outline: none; transition: var(--trans);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--dourado); background: var(--branco);
+      box-shadow: 0 0 0 3px rgba(201,168,76,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-enviar {
+      width: 100%; padding: 13px;
+      background: var(--vinho); color: var(--branco);
+      border: none; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: .82rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      cursor: pointer; transition: var(--trans);
+    }
+    .btn-enviar:hover { background: var(--vinho-lt); }
+    .form-success {
+      display: none; text-align: center; padding: 20px;
+      color: #27ae60; font-size: .9rem;
+    }
+
+    @media(max-width:768px){ .contato-grid { grid-template-columns: 1fr; gap: 40px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+      </a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Catálogo</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="contato.html" class="active">Fale Conosco</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Fale <em>Conosco</em></h1>
+    <p>Estamos aqui para ajudar você a encontrar a fragrância perfeita</p>
+  </div>
+
+  <section class="contato-section">
+    <div class="contato-grid">
+      <div class="contato-info">
+        <h2>Entre em contato</h2>
+        <p>Tem dúvidas sobre algum produto, quer saber mais sobre uma fragrância ou simplesmente quer conversar sobre perfumes? Fale conosco pelos canais abaixo:</p>
+
+        <a class="canal" href="https://wa.me/5516999999999" target="_blank">
+          <div class="canal-icon whats">💬</div>
+          <div class="canal-text">
+            <strong>WhatsApp</strong>
+            <span>Resposta rápida • Atendimento personalizado</span>
+          </div>
+        </a>
+        <a class="canal" href="https://www.instagram.com/suaessencia.perfumaria" target="_blank">
+          <div class="canal-icon insta">📸</div>
+          <div class="canal-text">
+            <strong>Instagram</strong>
+            <span>@suaessencia.perfumaria • Novidades e lançamentos</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="contato-form-card">
+        <h3>Envie sua mensagem</h3>
+        <form id="contatoForm">
+          <div class="form-group">
+            <label>Seu nome</label>
+            <input type="text" placeholder="Como posso te chamar?" required>
+          </div>
+          <div class="form-group">
+            <label>Assunto</label>
+            <select>
+              <option value="">Selecione um assunto</option>
+              <option>Dúvida sobre produto</option>
+              <option>Informações sobre entrega</option>
+              <option>Sugestão</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensagem</label>
+            <textarea placeholder="Escreva sua mensagem aqui..." required></textarea>
+          </div>
+          <button type="submit" class="btn-enviar">Enviar via WhatsApp</button>
+        </form>
+        <div class="form-success" id="formSuccess">✅ Mensagem preparada! Abrindo WhatsApp...</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+        <p>Perfumaria exclusiva com curadoria especial para você.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <a href="../index.html">Catálogo</a>
+        <a href="quem-somos.html">Quem Somos</a>
+        <a href="contato.html">Fale Conosco</a>
+      </div>
+      <div class="footer-social">
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/suaessencia.perfumaria" target="_blank">@suaessencia.perfumaria</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Sua Essência. Todos os direitos reservados.</p></div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script>
+    document.getElementById('contatoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome = this.querySelector('input[type=text]').value;
+      const assunto = this.querySelector('select').value;
+      const msg = this.querySelector('textarea').value;
+      const texto = `Olá! Meu nome é *${nome}*.\n*Assunto:* ${assunto || 'Contato geral'}\n\n${msg}`;
+      document.getElementById('formSuccess').style.display = 'block';
+      setTimeout(() => window.open(`https://wa.me/5516999999999?text=${encodeURIComponent(texto)}`, '_blank'), 800);
+    });
+  </script>
+</body>
+</html>

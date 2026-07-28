@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Somos — Sua Essência</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--vinho-dark), var(--vinho));
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--branco);
+      letter-spacing: .06em;
+    }
+    .page-hero h1 em { color: var(--dourado); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,.55); margin-top: 12px; font-size: .9rem; letter-spacing: .08em; }
+
+    .sobre-section { padding: 80px 24px; }
+    .sobre-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .sobre-texto h2 {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 400;
+      color: var(--vinho); margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .sobre-texto h2 em { color: var(--dourado); }
+    .sobre-texto p {
+      font-size: .92rem; line-height: 1.85;
+      color: var(--texto-md); margin-bottom: 16px;
+    }
+    .sobre-deco {
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--areia), var(--bege));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem;
+      box-shadow: var(--shadow-lg);
+      position: relative; overflow: hidden;
+    }
+    .sobre-deco::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(201,168,76,.2), transparent 60%);
+    }
+
+    .valores-section {
+      background: var(--vinho-dark); padding: 72px 24px;
+    }
+    .valores-inner { max-width: 1100px; margin: 0 auto; }
+    .valores-inner .section-title { color: var(--branco); text-align: center; }
+    .valores-inner .section-sub  { color: rgba(255,255,255,.4); text-align: center; margin-bottom: 48px; }
+    .valores-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .valor-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(201,168,76,.15);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px; text-align: center;
+      transition: var(--trans);
+    }
+    .valor-card:hover { background: rgba(201,168,76,.08); border-color: rgba(201,168,76,.3); }
+    .valor-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .valor-card h3 {
+      font-family: var(--font-display); font-size: 1.2rem;
+      color: var(--dourado); margin-bottom: 10px;
+    }
+    .valor-card p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+    @media(max-width:768px){
+      .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .sobre-deco { max-width: 280px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+      </a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Catálogo</a></li>
+        <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+        <li><a href="contato.html">Fale Conosco</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Quem <em>Somos</em></h1>
+    <p>Nossa história e nossos valores</p>
+  </div>
+
+  <section class="sobre-section">
+    <div class="sobre-grid">
+      <div class="sobre-texto">
+        <h2>Uma paixão por<br><em>fragrâncias únicas</em></h2>
+        <p>
+          <!-- PREENCHA AQUI COM SUA HISTÓRIA -->
+          A Sua Essência nasceu da paixão por fragrâncias exclusivas e do desejo de levar ao público uma curadoria cuidadosa de perfumes que vão além do comum. Cada produto que faz parte do nosso catálogo foi selecionado com atenção especial ao aroma, qualidade e durabilidade.
+        </p>
+        <p>
+          Trabalhamos com perfumes árabes artesanais, importados de renomadas casas europeias, body splashes refrescantes, miniaturas colecionáveis e produtos de beleza premium — tudo reunido em um só lugar para facilitar sua experiência.
+        </p>
+        <p>
+          Nossa missão é simples: ajudar cada pessoa a encontrar a fragrância que conta a sua história.
+        </p>
+      </div>
+      <div class="sobre-deco">🌹</div>
+    </div>
+  </section>
+
+  <section class="valores-section">
+    <div class="valores-inner">
+      <h2 class="section-title">Nossos Valores</h2>
+      <p class="section-sub">O que nos guia em cada escolha</p>
+      <div class="valores-grid">
+        <div class="valor-card">
+          <div class="valor-icon">✨</div>
+          <h3>Qualidade</h3>
+          <p>Selecionamos apenas fragrâncias originais, com procedência garantida e aromas excepcionais.</p>
+        </div>
+        <div class="valor-card">
+          <div class="valor-icon">🌿</div>
+          <h3>Curadoria</h3>
+          <p>Cada produto é escolhido com cuidado, testado e aprovado antes de entrar no catálogo.</p>
+        </div>
+        <div class="valor-card">
+          <div class="valor-icon">💛</div>
+          <h3>Atendimento</h3>
+          <p>Acreditamos em um atendimento próximo, personalizado e que realmente ajuda você a escolher.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+        <p>Perfumaria exclusiva com curadoria especial para você.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <a href="../index.html">Catálogo</a>
+        <a href="quem-somos.html">Quem Somos</a>
+        <a href="contato.html">Fale Conosco</a>
+      </div>
+      <div class="footer-social">
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/suaessencia.perfumaria" target="_blank">@suaessencia.perfumaria</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Sua Essência. Todos os direitos reservados.</p></div>
+  </footer>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto — Sua Essência</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .produto-section {
+      max-width: 1000px; margin: 56px auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+    }
+    .produto-img-wrap {
+      border-radius: 8px; overflow: hidden;
+      background: var(--areia); aspect-ratio: 1;
+    }
+    .produto-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .produto-img-placeholder {
+      width: 100%; height: 100%; min-height: 360px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+    }
+    .produto-info { display: flex; flex-direction: column; gap: 16px; }
+    .produto-cat {
+      font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--bronze);
+    }
+    .produto-nome {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400; color: var(--texto); line-height: 1.2;
+    }
+    .produto-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .produto-desc {
+      font-size: .92rem; color: var(--texto-md);
+      line-height: 1.85; border-top: 1px solid var(--bege);
+      padding-top: 16px;
+    }
+    .produto-preco {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 600; color: var(--vinho);
+    }
+    .produto-preco .preco-ant {
+      font-size: 1rem; color: var(--texto-lt);
+      text-decoration: line-through; margin-right: 8px; font-weight: 300;
+    }
+    .btn-finalizar {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px; background: #25D366; border: none; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: .88rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--branco); cursor: pointer; transition: var(--trans);
+      text-decoration: none; width: 100%;
+    }
+    .btn-finalizar:hover { background: #1aab52; transform: translateY(-1px); }
+    .btn-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--texto-lt); text-decoration: none;
+      margin: 32px 24px 0; transition: var(--trans);
+    }
+    .btn-voltar:hover { color: var(--vinho); }
+    .loading { text-align: center; padding: 80px; color: var(--texto-lt); }
+    @media(max-width: 768px) {
+      .produto-section { grid-template-columns: 1fr; gap: 32px; margin: 32px auto; }
+    }
+    .galeria { display: flex; flex-direction: column; gap: 10px; }
+.galeria-principal {
+  border-radius: 8px; overflow: hidden;
+  background: var(--areia); aspect-ratio: 1;
+  position: relative;
+}
+.galeria-principal img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: opacity .25s ease;
+}
+.galeria-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.85); border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.1rem; color: var(--vinho);
+  transition: var(--trans); z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.galeria-arrow:hover { background: var(--branco); transform: translateY(-50%) scale(1.08); }
+.galeria-arrow.prev { left: 10px; }
+.galeria-arrow.next { right: 10px; }
+.galeria-arrow.hidden { display: none; }
+.galeria-dots {
+  display: flex; justify-content: center; gap: 6px; padding: 4px 0;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--bege-dark); border: none; cursor: pointer;
+  transition: var(--trans); padding: 0;
+}
+.dot.ativa { background: var(--vinho); transform: scale(1.2); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+      </a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Catálogo</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="contato.html">Fale Conosco</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <a href="../index.html" class="btn-voltar">← Voltar ao catálogo</a>
+
+  <div id="conteudo">
+    <div class="loading">Carregando produto...</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-sua">Sua</span><span class="logo-essencia">Essência</span>
+        <p>Perfumaria exclusiva com curadoria especial para você.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <a href="../index.html">Catálogo</a>
+        <a href="quem-somos.html">Quem Somos</a>
+        <a href="contato.html">Fale Conosco</a>
+      </div>
+      <div class="footer-social">
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/suaessencia.perfumaria" target="_blank">@suaessencia.perfumaria</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Sua Essência. Todos os direitos reservados.</p></div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+  const WHATSAPP = '5516999999999';
+  let fotos = [];
+  let fotoAtual = 0;
+
+  function trocarFoto(index) {
+    if (index < 0 || index >= fotos.length) return;
+    fotoAtual = index;
+
+    document.getElementById('fotoPrincipal').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('fotoPrincipal').src = fotos[fotoAtual];
+      document.getElementById('fotoPrincipal').style.opacity = '1';
+    }, 150);
+
+    // Atualiza dots
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('ativa', i === fotoAtual);
+    });
+
+    // Mostra/esconde setas
+    document.querySelector('.galeria-arrow.prev')
+      .classList.toggle('hidden', fotoAtual === 0);
+    document.querySelector('.galeria-arrow.next')
+      .classList.toggle('hidden', fotoAtual === fotos.length - 1);
+  }
+
+  async function carregarProduto() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) { window.location.href = '../index.html'; return; }
+
+    try {
+      const todos = await ProdutosAPI.listar();
+      const p = todos.find(x => String(x.id) === String(id));
+
+      if (!p) {
+        document.getElementById('conteudo').innerHTML =
+          '<div class="loading">Produto não encontrado.</div>';
+        return;
+      }
+
+      document.title = `${p.nome} — Sua Essência`;
+
+      const fmtPreco = v => 'R$ ' + parseFloat(v).toFixed(2).replace('.', ',');
+
+      const precoHTML = p.precoAnt
+        ? `<span class="preco-ant">${fmtPreco(p.precoAnt)}</span>${fmtPreco(p.preco)}`
+        : fmtPreco(p.preco);
+
+      fotos = [p.imagemUrl, p.imagemUrl2, p.imagemUrl3].filter(Boolean);
+
+      const badges = [
+        p.destaque ? `<span class="badge badge-destaque">★ Mais Vendido</span>` : '',
+        p.promocao  ? `<span class="badge badge-promo">Promoção</span>` : '',
+      ].filter(Boolean).join('');
+
+      const msg = `Olá! Vi o catálogo da *Sua Essência* e tenho interesse no produto:\n\n*${p.nome}* — ${fmtPreco(p.preco)}\n\nGostaria de finalizar a compra!`;
+
+      const dotsHTML = fotos.length > 1
+        ? `<div class="galeria-dots">
+            ${fotos.map((_, i) =>
+              `<button class="dot ${i === 0 ? 'ativa' : ''}" onclick="trocarFoto(${i})"></button>`
+            ).join('')}
+           </div>`
+        : '';
+
+      document.getElementById('conteudo').innerHTML = `
+        <section class="produto-section">
+          <div class="galeria">
+            <div class="galeria-principal">
+              ${fotos.length > 1 ? `<button class="galeria-arrow prev hidden" onclick="trocarFoto(fotoAtual - 1)">&#8592;</button>` : ''}
+              ${fotos.length > 0
+                ? `<img id="fotoPrincipal" src="${fotos[0]}" alt="${p.nome}" style="transition: opacity .15s ease;">`
+                : `<div class="produto-img-placeholder">🌸</div>`}
+              ${fotos.length > 1 ? `<button class="galeria-arrow next" onclick="trocarFoto(fotoAtual + 1)">&#8594;</button>` : ''}
+            </div>
+            ${dotsHTML}
+          </div>
+          <div class="produto-info">
+            <div class="produto-cat">${p.categoria || ''}</div>
+            <h1 class="produto-nome">${p.nome}</h1>
+            ${badges ? `<div class="produto-badges">${badges}</div>` : ''}
+            ${p.descricao ? `<p class="produto-desc">${p.descricao}</p>` : ''}
+            <div class="produto-preco">${precoHTML}</div>
+            <a class="btn-finalizar"
+              href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}"
+              target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a8.484 8.484 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.278 7.038L.787 23.213l4.332-1.381A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+              </svg>
+              Finalizar no WhatsApp
+            </a>
+          </div>
+        </section>`;
+
+    } catch(e) {
+      document.getElementById('conteudo').innerHTML =
+        '<div class="loading">Erro ao carregar produto. Tente novamente.</div>';
+    }
+  }
+
+  carregarProduto();
+</script>
+</body>
+</html>

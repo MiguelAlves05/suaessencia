@@ -1,0 +1,43 @@
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: suaessencia-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: suaessencia123
+      MYSQL_DATABASE: suaessencia
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: suaessencia-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/suaessencia?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: suaessencia123
+      JWT_SECRET: SuaEssencia@SecretKey2025#MudeEmProducao!
+      JWT_EXPIRATION_MS: 86400000
+      CORS_ALLOWED_ORIGINS: http://localhost:5500,http://localhost:3000
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin123
+      SPRING_SECURITY_USER_NAME: desativado
+      SPRING_SECURITY_USER_PASSWORD: desativado
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
+    driver: local
