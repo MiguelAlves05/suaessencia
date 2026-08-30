@@ -2,7 +2,7 @@
    CATALOG.JS — Lógica do Catálogo Público
    ============================================= */
 
-const WHATSAPP = '5516999999999'; // ← SUBSTITUA pelo número real
+const WHATSAPP = '5516981840032'; // 
 
 let todosOsProdutos = [];
 let catAtiva = 'todos';
@@ -23,19 +23,8 @@ async function carregarProdutos() {
   try {
     todosOsProdutos = await ProdutosAPI.listar();
   } catch {
-    // Dados de exemplo enquanto o backend não está no ar
-    todosOsProdutos = [
-      { id:1, nome:'Oud Al Layl', categoria:'Árabe', preco:189.90, precoAnt:null, descricao:'Notas de oud, âmbar e sândalo envelhecido. Uma fragrância intensa e duradoura que evoca o exotismo do Oriente.', imagem:'https://images.unsplash.com/photo-1541643600914-78b084683702?w=500&q=80', destaque:true, promocao:false },
-      { id:2, nome:'Rose Mystique', categoria:'Importados', preco:245.00, precoAnt:290.00, descricao:'Rosas búlgaras, jasmim e musk branco. Refinado e elegante, perfeito para ocasiões especiais.', imagem:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80', destaque:true, promocao:true },
-      { id:3, nome:'Velvet Noir', categoria:'Importados', preco:320.00, precoAnt:null, descricao:'Bergamota italiana, madeira de cedro e baunilha de Madagascar. Sofisticação em cada gota.', imagem:'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&q=80', destaque:false, promocao:false },
-      { id:4, nome:'Splash Floral', categoria:'Body Splash', preco:49.90, precoAnt:65.00, descricao:'Leveza floral com notas de peônia e framboesa. Refrescante para o dia a dia.', imagem:'https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&q=80', destaque:false, promocao:true },
-      { id:5, nome:'Ambar Royal', categoria:'Árabe', preco:210.00, precoAnt:null, descricao:'Âmbar dourado, almíscar e especiarias orientais. Envolvente e sensual.', imagem:'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80', destaque:true, promocao:false },
-      { id:6, nome:'Mini Chic', categoria:'Miniaturas', preco:35.90, precoAnt:null, descricao:'Miniatura de 10ml ideal para viagens. Elegância no tamanho certo.', imagem:'https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&q=80', destaque:false, promocao:false },
-      { id:7, nome:'Velvet Lip', categoria:'Maquiagem', preco:59.90, precoAnt:79.90, descricao:'Batom de longa duração com acabamento aveludado. Cor intensa e hidratação superior.', imagem:'https://images.unsplash.com/photo-1586495777744-4e6232bf4fa0?w=500&q=80', destaque:false, promocao:true },
-      { id:8, nome:'Golden Oud', categoria:'Árabe', preco:275.00, precoAnt:null, descricao:'Oud premium com ouro coloidal, rosa turca e notas de baunilha.', imagem:'https://images.unsplash.com/photo-1541643600914-78b084683702?w=500&q=80', destaque:true, promocao:false },
-    ];
+    todosOsProdutos = [];
   }
-
   renderizar(todosOsProdutos);
 }
 
