@@ -2,7 +2,7 @@
    API.JS — Comunicação com o Backend
    ============================================= */
 
-const API_BASE = 'http://localhost:8081';
+const API_BASE = 'https://suaessencia-api.onrender.com';
 
 // Token JWT (admin)
 function getToken() { return localStorage.getItem('se_token'); }
