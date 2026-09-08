@@ -18,8 +18,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function carregarProdutos() {
   const grid = document.getElementById('productsGrid');
-  grid.innerHTML = `<div class="loading-pulse"></div>`.repeat(6);
-
+  grid.innerHTML = `
+    <div style="grid-column:1/-1; text-align:center; padding:60px 0; color:var(--texto-lt)">
+      <div style="font-size:2rem; margin-bottom:12px">🌸</div>
+      <p style="font-size:.9rem">Carregando produtos...</p>
+      <p style="font-size:.78rem; margin-top:6px; opacity:.6">Aguarde um momento</p>
+    </div>`;
   try {
     todosOsProdutos = await ProdutosAPI.listar();
   } catch {
@@ -27,6 +31,8 @@ async function carregarProdutos() {
   }
   renderizar(todosOsProdutos);
 }
+
+
 
 /* ── RENDER ── */
 function renderizar(lista) {
